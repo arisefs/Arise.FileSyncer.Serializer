@@ -9,7 +9,7 @@ namespace Arise.FileSyncer.Serializer
     {
         #region Strings
         /// <summary>
-        /// Writes a string at the end of the stream using an int for the length and the specified encoding.
+        /// Writes a string at the end of the stream using an ushort for the length in UTF-8 encoding.
         /// </summary>
         public static void WriteAFS(this Stream stream, string data)
         {
@@ -17,7 +17,7 @@ namespace Arise.FileSyncer.Serializer
 
             if (bytes.Length > ushort.MaxValue)
             {
-                throw new ArgumentOutOfRangeException("data", bytes.Length, "The string UTF-8 size must be smaller than 65535");
+                throw new ArgumentOutOfRangeException(nameof(data), bytes.Length, "The string UTF-8 size must be smaller than 65535");
             }
 
             stream.WriteAFS(Convert.ToUInt16(bytes.Length));
