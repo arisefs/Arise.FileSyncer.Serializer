@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 
@@ -177,7 +177,7 @@ namespace Arise.FileSyncer.Serializer
         /// </summary>
         public static bool ReadBoolean(this Stream stream)
         {
-            return (stream.ReadOneByte() > 0) ? true : false;
+            return stream.ReadOneByte() > 0;
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Arise.FileSyncer.Serializer
         /// </summary>
         public static T Read<T>(this Stream stream) where T : IBinarySerializable, new()
         {
-            T data = new T();
+            var data = new T();
             data.Deserialize(stream);
             return data;
         }
