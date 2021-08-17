@@ -245,11 +245,11 @@ namespace Arise.FileSyncer.Serializer
 
         #region Miscellaneous
         /// <summary>
-        /// Reads a System.DateTime (as Ticks.ToLocalTime()) from the stream.
+        /// Reads a System.DateTime (as Ticks UTC) from the stream.
         /// </summary>
         public static DateTime ReadDateTime(this Stream stream)
         {
-            return new DateTime(stream.ReadInt64()).ToLocalTime();
+            return new DateTime(stream.ReadInt64(), DateTimeKind.Utc);
         }
 
         /// <summary>
