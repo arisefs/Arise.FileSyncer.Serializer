@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -226,7 +227,8 @@ namespace Arise.FileSyncer.Serializer
         /// </summary>
         public static void WriteAFS(this Stream stream, DateTime data)
         {
-            stream.WriteAFS(data.ToUniversalTime().Ticks);
+            Debug.Assert(data.Kind == DateTimeKind.Utc);
+            stream.WriteAFS(data.Ticks);
         }
 
         /// <summary>
