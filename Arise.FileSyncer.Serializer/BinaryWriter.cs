@@ -166,7 +166,7 @@ namespace Arise.FileSyncer.Serializer
         /// </summary>
         public static void WriteAFS(this Stream stream, bool data)
         {
-            stream.WriteByte((data) ? (byte)1 : (byte)0);
+            stream.WriteByte(data ? (byte)1 : (byte)0);
         }
 
         /// <summary>
